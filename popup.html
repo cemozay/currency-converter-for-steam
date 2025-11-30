@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="title">Currency Converter</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 id="headerTitle" data-i18n="title">💰 Currency Converter</h1>
+        <div class="header-controls">
+          <label class="toggle-switch" title="Enable/Disable">
+            <input type="checkbox" id="extensionToggle" checked />
+            <span class="toggle-slider"></span>
+          </label>
+          <div class="language-selector">
+            <span class="lang-option" data-lang="tr">TR</span>
+            <span class="lang-separator">|</span>
+            <span class="lang-option" data-lang="en">EN</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Section -->
+      <section class="section">
+        <div class="info-row">
+          <span class="label" data-i18n="convertTo">Convert to:</span>
+          <select id="targetCurrency" class="currency-select">
+            <option value="" data-i18n="loadingCurrencies">
+              Loading currencies...
+            </option>
+          </select>
+        </div>
+
+        <div class="info-row" id="steamCurrencyInfo" style="display: none">
+          <span class="label" data-i18n="steamCurrency">Steam Currency:</span>
+          <span class="value" id="steamCurrency">--</span>
+        </div>
+
+        <div class="info-row" id="exchangeRateInfo">
+          <span class="label" data-i18n="exchangeRate">Exchange Rate:</span>
+          <span class="value" id="exchangeRate">--</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label" data-i18n="lastUpdate">Last Update:</span>
+          <span class="value" id="currencyLastUpdate">--</span>
+        </div>
+
+        <!-- Error Message -->
+        <div
+          class="error-message"
+          id="currencyError"
+          style="display: none"
+        ></div>
+
+        <div class="button-group">
+          <button id="refreshCurrency" class="btn btn-primary">
+            <span data-i18n="refreshRates">Refresh Rates</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Loading Indicator -->
+      <div class="loading" id="loading" style="display: none">
+        <div class="spinner"></div>
+        <span data-i18n="updating">Updating...</span>
+      </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Build files
+*.zip
+*.crx
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node modules (if you add any later)
+node_modules/
+
+# Extension packaging
+*.zip
+*.crx
+*.pem
+
+# Temporary files
+*.tmp
+*.temp
+
+# Agent-specific files (not needed for public repo)
+AGENTS.md
+memory-bank/

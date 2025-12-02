@@ -1,0 +1,83 @@
+{
+  "extName": {
+    "message": "Steam için Para Birimi Dönüştürücü",
+    "description": "Extension name shown in browser"
+  },
+  "extDescription": {
+    "message": "Steam oyun fiyatlarını istediğiniz para birimine dönüştürün. Steam'in para birimini otomatik algılar ve seçtiğiniz para birimine çevirir.",
+    "description": "Extension description shown in browser"
+  },
+  "title": {
+    "message": "Para Birimi Dönüştürücü"
+  },
+  "targetCurrency": {
+    "message": "Hedef Para Birimi"
+  },
+  "convertTo": {
+    "message": "Dönüştür:"
+  },
+  "steamCurrency": {
+    "message": "Steam Para Birimi:"
+  },
+  "exchangeRate": {
+    "message": "Döviz Kuru:"
+  },
+  "loadingCurrencies": {
+    "message": "Para birimleri yükleniyor..."
+  },
+  "exchangeRates": {
+    "message": "Döviz Kurları"
+  },
+  "baseCurrency": {
+    "message": "Temel Para Birimi:"
+  },
+  "lastUpdate": {
+    "message": "Son Güncelleme:"
+  },
+  "availableCurrencies": {
+    "message": "Mevcut Para Birimleri:"
+  },
+  "refreshRates": {
+    "message": "Kurları Yenile"
+  },
+  "updating": {
+    "message": "Güncelleniyor..."
+  },
+  "error": {
+    "message": "Hata"
+  },
+  "justNow": {
+    "message": "Az önce"
+  },
+  "minuteAgo": {
+    "message": "dakika önce"
+  },
+  "minutesAgo": {
+    "message": "dakika önce"
+  },
+  "hourAgo": {
+    "message": "saat önce"
+  },
+  "hoursAgo": {
+    "message": "saat önce"
+  },
+  "dayAgo": {
+    "message": "gün önce"
+  },
+  "daysAgo": {
+    "message": "gün önce"
+  },
+  "notUpdatedYet": {
+    "message": "Henüz güncellenmedi"
+  },
+  "language": {
+    "message": "Dil:"
+  },
+  "extensionEnabled": {
+    "message": "Uzantı Etkin"
+  },
+  "extensionDisabled": {
+    "message": "Uzantı Devre Dışı"
+  }
+}
+

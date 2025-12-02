@@ -479,8 +479,13 @@ async function initialize() {
     DKK: 6.85,
   };
 
+  // Detect browser language to set appropriate default target currency
+  // Turkish users get TRY, others get USD
+  const browserLang = chrome.i18n.getUILanguage();
+  const defaultTargetCurrency = browserLang.startsWith("tr") ? "TRY" : "USD";
+
   await chrome.storage.local.set({
-    targetCurrency: "USD", // Default target currency
+    targetCurrency: defaultTargetCurrency,
     exchangeRates: {
       rates: defaultRates,
       base: BASE_CURRENCY,

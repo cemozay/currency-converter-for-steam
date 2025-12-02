@@ -1,0 +1,83 @@
+{
+  "extName": {
+    "message": "Currency Converter for Steam",
+    "description": "Extension name shown in browser"
+  },
+  "extDescription": {
+    "message": "Convert Steam game prices to any currency. Automatically detects Steam's currency and converts to your selected currency.",
+    "description": "Extension description shown in browser"
+  },
+  "title": {
+    "message": "Currency Converter"
+  },
+  "targetCurrency": {
+    "message": "Target Currency"
+  },
+  "convertTo": {
+    "message": "Convert to:"
+  },
+  "steamCurrency": {
+    "message": "Steam Currency:"
+  },
+  "exchangeRate": {
+    "message": "Exchange Rate:"
+  },
+  "loadingCurrencies": {
+    "message": "Loading currencies..."
+  },
+  "exchangeRates": {
+    "message": "Exchange Rates"
+  },
+  "baseCurrency": {
+    "message": "Base Currency:"
+  },
+  "lastUpdate": {
+    "message": "Last Update:"
+  },
+  "availableCurrencies": {
+    "message": "Available Currencies:"
+  },
+  "refreshRates": {
+    "message": "Refresh Rates"
+  },
+  "updating": {
+    "message": "Updating..."
+  },
+  "error": {
+    "message": "Error"
+  },
+  "justNow": {
+    "message": "Just now"
+  },
+  "minuteAgo": {
+    "message": "minute ago"
+  },
+  "minutesAgo": {
+    "message": "minutes ago"
+  },
+  "hourAgo": {
+    "message": "hour ago"
+  },
+  "hoursAgo": {
+    "message": "hours ago"
+  },
+  "dayAgo": {
+    "message": "day ago"
+  },
+  "daysAgo": {
+    "message": "days ago"
+  },
+  "notUpdatedYet": {
+    "message": "Not updated yet"
+  },
+  "language": {
+    "message": "Language:"
+  },
+  "extensionEnabled": {
+    "message": "Extension Enabled"
+  },
+  "extensionDisabled": {
+    "message": "Extension Disabled"
+  }
+}
+

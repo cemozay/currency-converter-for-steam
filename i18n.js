@@ -1,78 +1,9 @@
-// Internationalization (i18n) for Turkish and English
-// Supports: tr (Turkish), en (English)
+// Internationalization (i18n) using Chrome's native i18n API
+// Translations stored in _locales/[locale]/messages.json
+// Supports runtime language switching by loading locale files dynamically
 
-const translations = {
-  en: {
-    // Header
-    title: "Currency Converter",
-
-    // Currency Selection
-    targetCurrency: "Target Currency",
-    convertTo: "Convert to:",
-    steamCurrency: "Steam Currency:",
-    exchangeRate: "Exchange Rate:",
-    loadingCurrencies: "Loading currencies...",
-
-    // Exchange Rates
-    exchangeRates: "Exchange Rates",
-    baseCurrency: "Base Currency:",
-    lastUpdate: "Last Update:",
-    availableCurrencies: "Available Currencies:",
-    refreshRates: "Refresh Rates",
-    updating: "Updating...",
-    error: "Error",
-
-    // Time
-    justNow: "Just now",
-    minuteAgo: "minute ago",
-    minutesAgo: "minutes ago",
-    hourAgo: "hour ago",
-    hoursAgo: "hours ago",
-    dayAgo: "day ago",
-    daysAgo: "days ago",
-    notUpdatedYet: "Not updated yet",
-
-    // Settings
-    language: "Language:",
-    extensionEnabled: "Extension Enabled",
-    extensionDisabled: "Extension Disabled",
-  },
-  tr: {
-    // Header
-    title: "Para Birimi Dönüştürücü",
-
-    // Currency Selection
-    targetCurrency: "Hedef Para Birimi",
-    convertTo: "Dönüştür:",
-    steamCurrency: "Steam Para Birimi:",
-    exchangeRate: "Döviz Kuru:",
-    loadingCurrencies: "Para birimleri yükleniyor...",
-
-    // Exchange Rates
-    exchangeRates: "Döviz Kurları",
-    baseCurrency: "Temel Para Birimi:",
-    lastUpdate: "Son Güncelleme:",
-    availableCurrencies: "Mevcut Para Birimleri:",
-    refreshRates: "Kurları Yenile",
-    updating: "Güncelleniyor...",
-    error: "Hata",
-
-    // Time
-    justNow: "Az önce",
-    minuteAgo: "dakika önce",
-    minutesAgo: "dakika önce",
-    hourAgo: "saat önce",
-    hoursAgo: "saat önce",
-    dayAgo: "gün önce",
-    daysAgo: "gün önce",
-    notUpdatedYet: "Henüz güncellenmedi",
-
-    // Settings
-    language: "Dil:",
-    extensionEnabled: "Uzantı Etkin",
-    extensionDisabled: "Uzantı Devre Dışı",
-  },
-};
+// Cache for loaded translations
+let translationsCache = {};
 
 /**
  * Get current language from storage or browser default
@@ -81,11 +12,11 @@ const translations = {
 async function getLanguage() {
   return new Promise((resolve) => {
     chrome.storage.local.get(["language"], (data) => {
-      if (data.language) {
+      if (data.language && (data.language === "tr" || data.language === "en")) {
         resolve(data.language);
       } else {
-        // Detect browser language
-        const browserLang = navigator.language || navigator.userLanguage;
+        // Detect browser language using Chrome i18n API
+        const browserLang = chrome.i18n.getUILanguage();
         const lang = browserLang.startsWith("tr") ? "tr" : "en";
         resolve(lang);
       }
@@ -94,7 +25,7 @@ async function getLanguage() {
 }
 
 /**
- * Set language
+ * Set language preference
  * @param {string} lang - Language code ('tr' or 'en')
  */
 async function setLanguage(lang) {
@@ -106,14 +37,58 @@ async function setLanguage(lang) {
 }
 
 /**
+ * Load translations from _locales/[locale]/messages.json
+ * @param {string} locale - Locale code
+ * @returns {Promise<Object>} - Translations object
+ */
+async function loadTranslations(locale) {
+  if (translationsCache[locale]) {
+    return translationsCache[locale];
+  }
+
+  try {
+    const url = chrome.runtime.getURL(`_locales/${locale}/messages.json`);
+    const response = await fetch(url);
+    const messages = await response.json();
+
+    // Convert Chrome i18n format to simple key-value
+    const translations = {};
+    for (const [key, value] of Object.entries(messages)) {
+      translations[key] = value.message;
+    }
+
+    translationsCache[locale] = translations;
+    return translations;
+  } catch (error) {
+    console.error(`Failed to load translations for ${locale}:`, error);
+    // Fallback to English if loading fails
+    if (locale !== "en") {
+      return loadTranslations("en");
+    }
+    return {};
+  }
+}
+
+/**
  * Get translated text
+ * Uses Chrome's i18n API when browser locale matches, otherwise loads from _locales
  * @param {string} key - Translation key
  * @param {string} lang - Language code (optional, will be detected if not provided)
  * @returns {Promise<string>} - Translated text
  */
 async function t(key, lang = null) {
   const currentLang = lang || (await getLanguage());
-  return translations[currentLang]?.[key] || translations.en[key] || key;
+  const browserLang = chrome.i18n.getUILanguage().split("-")[0];
+
+  // Use Chrome's native i18n API if browser locale matches
+  if (currentLang === browserLang) {
+    const message = chrome.i18n.getMessage(key);
+    if (message) return message;
+  }
+
+  // Load translations for runtime language switching
+  const translations = await loadTranslations(currentLang);
+  return translations[key] || chrome.i18n.getMessage(key) || key;
 }
 
 /**
@@ -123,5 +98,5 @@ async function t(key, lang = null) {
  */
 async function getAllTranslations(lang = null) {
   const currentLang = lang || (await getLanguage());
-  return translations[currentLang] || translations.en;
+  return loadTranslations(currentLang);
 }

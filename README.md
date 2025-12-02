@@ -14,7 +14,6 @@ A free, open-source Chrome extension that automatically converts Steam game pric
 - 🌐 **Multi-language Support** - English and Turkish
 - 📊 **Daily Updates** - Exchange rates update automatically
 - 🔒 **Privacy First** - No data collection, all processing happens locally
-- 💰 **Free API** - Uses exchangerate-api.com (no API key required)
 - 🚀 **Lightweight** - Only ~82 KB total size
 - ✅ **Manifest V3** - Compatible with latest Chrome standards
 

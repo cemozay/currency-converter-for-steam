@@ -1,136 +1,116 @@
 # Currency Converter for Steam
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Available-brightgreen)](https://chrome.google.com/webstore)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Available-brightgreen)](https://chromewebstore.google.com/detail/currency-converter-for-st/pmfjcaceniadnjkpjamcfonibolgfpmi)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/cemozay/currency-converter-for-steam)
 
-A free, open-source Chrome extension that automatically converts Steam game prices to any currency. No API keys required, works entirely offline after initial setup.
+Ever browsing Steam and wondering what that game actually costs in your currency? This extension does exactly that—converts Steam prices to whatever currency you want. It's free, open-source, and doesn't need any API keys. Once it's set up, it works offline too.
 
-## ✨ Features
+## What it does
 
-- 🌍 **170+ Supported Currencies** - Convert to any currency worldwide
-- 🔄 **Automatic Detection** - Detects Steam's regional currency automatically
-- ⚡ **Real-time Conversion** - Prices update instantly as you browse
-- 🎨 **Clean Interface** - Direct price replacement, no intrusive badges
-- 🌐 **Multi-language Support** - English and Turkish
-- 📊 **Daily Updates** - Exchange rates update automatically
-- 🔒 **Privacy First** - No data collection, all processing happens locally
-- 🚀 **Lightweight** - Only ~82 KB total size
-- ✅ **Manifest V3** - Compatible with latest Chrome standards
+- Supports 170+ currencies from around the world
+- Automatically figures out what currency Steam is showing you
+- Converts prices in real-time as you browse
+- Replaces prices directly on the page (no annoying badges or overlays)
+- Available in English and Turkish
+- Updates exchange rates daily
+- Doesn't collect any of your data—everything happens on your computer
 
-## 📸 Screenshots
+## Screenshots
 
 ![Screenshot 1](screenshots/screenshot-1.png)
 ![Screenshot 2](screenshots/screenshot-2.png)
 ![Screenshot 3](screenshots/screenshot-3.png)
 
-## 🚀 Installation
+## Installation
 
-### From Chrome Web Store
+### Easy way (Chrome Web Store)
 
-1. Visit the [Chrome Web Store](https://chrome.google.com/webstore)
+1. Go to the [Chrome Web Store page](https://chromewebstore.google.com/detail/currency-converter-for-st/pmfjcaceniadnjkpjamcfonibolgfpmi)
 2. Click "Add to Chrome"
-3. Confirm installation
-4. Visit any Steam store page to see converted prices!
+3. That's it! Head to any Steam page and you'll see prices in your currency
 
-### Manual Installation (Development)
+### For developers
 
-1. Clone this repository:
+If you want to tinker with it or contribute:
 
-   ```bash
-   git clone https://github.com/cemozay/currency-converter-for-steam.git
-   cd currency-converter-for-steam
-   ```
+```bash
+git clone https://github.com/cemozay/currency-converter-for-steam.git
+cd currency-converter-for-steam
+```
 
-2. Open Chrome and navigate to `chrome://extensions/`
+Then in Chrome:
 
-3. Enable "Developer mode" (toggle in top right)
+1. Go to `chrome://extensions/`
+2. Turn on "Developer mode" (top right corner)
+3. Click "Load unpacked"
+4. Select the folder you just cloned
 
-4. Click "Load unpacked"
+## How it works
 
-5. Select the project directory
+Pretty straightforward: you visit a Steam page, the extension detects what currency Steam is using, converts the prices to your chosen currency, and swaps them out. You see your currency instead of Steam's regional pricing.
 
-6. The extension is now installed!
+### Supported currencies
 
-## 📖 How It Works
+Works with all 37 currencies that Steam supports:
 
-1. **Visit Steam Store** - Navigate to any Steam store page
-2. **Automatic Detection** - Extension detects Steam's regional currency
-3. **Price Conversion** - Prices are converted to your selected target currency
-4. **Direct Replacement** - Original prices are replaced with converted values
-
-### Supported Steam Currencies
-
-The extension supports all 37 Steam-supported currencies:
-
-**Major:** USD, EUR, GBP, JPY, CNY  
+**Major currencies:** USD, EUR, GBP, JPY, CNY  
 **Americas:** BRL, CAD, MXN, CLP, COP, CRC, PEN, UYU  
 **Europe:** TRY, RUB, PLN, UAH, CHF, SEK, NOK, DKK  
 **Asia Pacific:** AUD, NZD, SGD, HKD, TWD, KRW, INR, IDR, MYR, PHP, THB, VND, KZT  
 **Middle East:** AED, SAR, QAR, KWD, ILS  
 **Africa:** ZAR
 
-## 🎯 Usage
+## Using it
 
-1. **Select Target Currency**
+**Pick your currency:** Click the extension icon and choose from the dropdown. Prices update right away.
 
-   - Click the extension icon
-   - Choose your preferred currency from the dropdown
-   - Prices will update automatically
+**Check exchange rates:** The popup shows you the current rate between Steam's currency and yours (like "1 USD = 30.00 TRY").
 
-2. **View Exchange Rates**
+**Update rates:** There's a refresh button if you want to manually update, but it does this automatically once a day anyway.
 
-   - Extension popup shows current exchange rates
-   - Steam currency is automatically detected
-   - Conversion rate displayed (e.g., "1 USD = 30.00 TRY")
+**Turn it on/off:** Use the toggle switch if you want to see original prices again.
 
-3. **Refresh Rates**
+## Contributing
 
-   - Click the refresh button to update exchange rates manually
-   - Rates update automatically once per day
+Found a bug? Want to add a feature? Pull requests are welcome!
 
-4. **Toggle Extension**
-   - Use the toggle switch to enable/disable the extension
-   - When disabled, original prices are restored
+Standard GitHub workflow:
 
-## 🤝 Contributing
+1. Fork it
+2. Create a branch (`git checkout -b feature/cool-new-thing`)
+3. Commit your changes (`git commit -m 'Added cool new thing'`)
+4. Push (`git push origin feature/cool-new-thing`)
+5. Open a pull request
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Some ideas if you're looking to contribute:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Translations for more languages
+- Performance improvements
+- Bug fixes (check the issues page)
+- New features
+- Better documentation
 
-### Areas for Contribution
+## License
 
-- Additional language translations
-- Performance optimizations
-- Bug fixes
-- Feature suggestions
-- Documentation improvements
+MIT License—do whatever you want with it. See [LICENSE](LICENSE) for the legal stuff.
 
-## 📝 License
+## Need help?
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Found a bug? [Open an issue](https://github.com/cemozay/currency-converter-for-steam/issues)
+- Have questions? [Start a discussion](https://github.com/cemozay/currency-converter-for-steam/discussions)
 
-## 📧 Support
+## Privacy
 
-- **Issues:** [GitHub Issues](https://github.com/cemozay/currency-converter-for-steam/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/cemozay/currency-converter-for-steam/discussions)
+Just to be clear:
 
-## 🔒 Privacy
+- This extension doesn't collect any of your data
+- It doesn't track what you do
+- It doesn't send anything to third parties
+- Everything runs locally on your computer
+- The only thing it fetches is public exchange rate data
 
-This extension:
-
-- ✅ Does NOT collect any personal data
-- ✅ Does NOT track user behavior
-- ✅ Does NOT transmit data to third parties
-- ✅ Processes all data locally
-- ✅ Only fetches public exchange rate data
-
-All exchange rates are cached locally and only updated when necessary.
+Exchange rates get cached on your machine and only update when needed.
 
 ---
 
-**Made with ❤️ for the Steam community**
+Made for Steam users who are tired of doing mental math while browsing the store.
